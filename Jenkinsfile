@@ -8,10 +8,14 @@ pipeline {
 	stages {
 	    stage("Checkout") {
 			steps {
-				echo 'Checkout source code for ci repo'
-				checkout scm
-		        echo 'Checkout source code for iri'
-				checkout scm: [$class: 'GitSCM', userRemoteConfigs: [[url: "https://github.com/iotaledger/iri.git"]], branches: [[name: "refs/tags/v1.3.2.1"]]], poll: false
+				dir('iotaledger-iri-ci') {
+					echo 'Checkout source code for ci repo'
+					checkout scm
+				}
+				dir('iotaledger-iri') {
+			        echo 'Checkout source code for iri'
+					checkout scm: [$class: 'GitSCM', userRemoteConfigs: [[url: "https://github.com/iotaledger/iri.git"]], branches: [[name: "refs/tags/v1.3.2.1"]]], poll: false
+				}
 			}
 	    }
 	
