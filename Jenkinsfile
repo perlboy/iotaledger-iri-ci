@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     parameters {
-		string(description: "Target tag name", name: 'targetTag',  defaultValue: "v1.3.2.1"),
+		string(description: "Target tag name", name: 'targetTag',  defaultValue: "v1.3.2.1")
     }
 
 	stages {
