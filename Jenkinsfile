@@ -15,13 +15,11 @@ pipeline {
 	
 	    stage("Do Maven build") {
 	        steps {
-	            withEnv(["PATH+MAVEN=$MAVEN_BUILD/bin","PATH+JDK=$JAVA8_HOME/bin"]) {
-	                echo 'Maven clean'
-	                sh "mvn clean"
-	
-	                echo 'Maven package'
-	                sh "mvn package"
-	            }
+                echo 'Maven clean'
+                sh "mvn clean"
+
+                echo 'Maven package'
+                sh "mvn package"
 	        }
 	     }
 	}
