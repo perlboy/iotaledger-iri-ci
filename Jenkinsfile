@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-	properties(
+	options(
 		[
 	                parameters([
 	                                string(description: "Target tag name", name: 'targetTag',  defaultValue: "v1.3.2.1"),
