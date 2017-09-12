@@ -9,7 +9,7 @@ pipeline {
 	    stage("Checkout") {
 			steps {
 		        echo 'Checkout source code'
-		        git branch: 'refs/tags/v1.3.2.1', poll: false, url: 'https://github.com/iotaledger/iri.git'
+				checkout scm: [$class: 'GitSCM', userRemoteConfigs: [[url: "https://github.com/iotaledger/iri.git"]], branches: [[name: "refs/tags/v1.3.2.1"]]], poll: false
 			}
 	    }
 	
