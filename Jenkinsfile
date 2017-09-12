@@ -1,18 +1,16 @@
-#!groovy
-
-properties(
-	[
-                parameters([
-                                string(description: "Target tag name", name: 'targetTag',  defaultValue: "v1.3.2.1"),
-                ])
-    ]
-)
-
 pipeline {
-    agent { any }
+    agent any
+
+	properties(
+		[
+	                parameters([
+	                                string(description: "Target tag name", name: 'targetTag',  defaultValue: "v1.3.2.1"),
+	                ])
+	    ]
+	)
 
 	stages {
-	    stage('Verify toolchain') {
+	    stage("Verify toolchain") {
 	        steps {
 	            def MAVEN_BUILD=tool name: 'Maven 3.5.0', type: 'hudson.tasks.Maven$MavenInstallation'
 	            echo "Driving build and unit tests using Maven $MAVEN_BUILD"
@@ -22,14 +20,14 @@ pipeline {
 	        }
 	    }
 	
-	    stage('Checkout') {
+	    stage("Checkout") {
 			steps {
 		        echo 'Checkout source code'
 		        git branch: 'refs/tags/v1.3.2.1', poll: false, url: 'https://github.com/iotaledger/iri.git'
 			}
 	    }
 	
-	    stage('Do Maven build') {
+	    stage("Do Maven build") {
 	        steps {
 	            withEnv(["PATH+MAVEN=$MAVEN_BUILD/bin","PATH+JDK=$JAVA8_HOME/bin"]) {
 	                stage 'Maven clean'
