@@ -1,0 +1,10 @@
+# Defaults for iotaledger-iri initscript
+# sourced by /etc/init.d/iotaledger-iri
+# installed at /etc/default/iotaledger-iri by the maintainer scripts
+
+#
+# This is a POSIX shell fragment
+#
+
+# Additional options that are passed to the Daemon.
+DAEMON_OPTS=""

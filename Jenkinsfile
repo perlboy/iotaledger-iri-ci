@@ -21,11 +21,13 @@ pipeline {
 	
 	    stage("Do Maven build") {
 	        steps {
-                echo 'Maven clean'
-                sh "mvn clean"
-
-                echo 'Maven package'
-                sh "mvn package"
+				dir('iotaledger-iri') {	
+	                echo 'Maven clean'
+	                sh "mvn clean"
+	
+	                echo 'Maven package'
+	                sh "mvn package"
+				}
 	        }
 	     }
 	}

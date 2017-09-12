@@ -1,0 +1,15 @@
+Source: iotaledger-iri
+Section: misc
+Priority: optional
+Maintainer: Stuart Low <stuart.low@me.com>
+Build-Depends: debhelper (>=9)
+Standards-Version: 3.9.6
+Homepage: https://github.com/iotaledger/iri
+#Vcs-Git: git://anonscm.debian.org/collab-maint/iotaledger-iri.git
+#Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/iotaledger-iri.git
+
+Package: iotaledger-iri
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: <insert up to 60 chars description>
+ <insert long description, indented with spaces>
