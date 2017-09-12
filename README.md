@@ -1,2 +1,6 @@
 # iotaledger-iri-ci
-Iotaledger IRI CI Integration
+
+This repository is for Jenkins CI integration of iotaledger-iri builds.
+
+We currently support Ubuntu build and publish
+
