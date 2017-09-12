@@ -1,13 +1,9 @@
 pipeline {
     agent any
 
-	options(
-		[
-	                parameters([
-	                                string(description: "Target tag name", name: 'targetTag',  defaultValue: "v1.3.2.1"),
-	                ])
-	    ]
-	)
+    parameters {
+		string(description: "Target tag name", name: 'targetTag',  defaultValue: "v1.3.2.1"),
+    }
 
 	stages {
 	    stage("Checkout") {
