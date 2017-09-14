@@ -37,7 +37,7 @@ pipeline {
 	                echo 'Transfer iri jar into ci source tree'
 	                sh "cp target/iri-${targetVersion}.jar ../iotaledger-iri-ci/iri.jar"
 					echo 'Produce fresh debian changelog using gitlog'
-					sh "echo > ../iotaledger-iri-ci/debian/changelog && prevtag=v1.2.0 && git tag -l v* | sort -V | while read tag; do     (echo \"$pkgname (${tag#v}) unstable; urgency=low\"; git log --pretty=format:'  * %s' $prevtag..$tag; git log --pretty='format:%n%n -- %aN <%aE>  %aD%n%n' $tag^..$tag) | cat - ../iotaledger-iri-ci/debian/changelog | sponge ../iotaledger-iri-ci/debian/changelog;         prevtag=$tag; done"
+					sh " ../iotaledger-iri-ci/makechangelog.sh"
 				}
 
 				dir('iotaledger-iri-ci') {
