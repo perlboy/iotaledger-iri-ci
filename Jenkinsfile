@@ -47,7 +47,7 @@ pipeline {
            steps {
 				dir('iotaledger-iri-ci') {
 					echo "Produce debian source file for upload"
-					sh "dpkg-buildpackage -k${keyId} -p'gpg --no-tty --passphrase-file /etc/jenkins.passphrase' -I -I.* -S"
+					sh "dpkg-buildpackage -k${keyId} -p'/usr/bin/gpg --no-use-agent --no-tty --passphrase-file /etc/jenkins.passphrase ' -I -I.* -S"
 				}
 	        }
 	    }
