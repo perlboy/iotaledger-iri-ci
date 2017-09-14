@@ -2,10 +2,8 @@ pipeline {
     agent any
 
     parameters {
-		[
-			string(description: "Target tag name", name: 'targetVersion',  defaultValue: "1.3.2.2"),
+			string(description: "Target tag name", name: 'targetVersion',  defaultValue: "1.3.2.2")
 			string(description: "Signing Key Id", name: 'keyId',  defaultValue: "E85A1CDA")
-		]
     }
 
 	stages {
