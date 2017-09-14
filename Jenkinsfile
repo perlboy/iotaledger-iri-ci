@@ -2,7 +2,8 @@ pipeline {
     agent any
 
     parameters {
-		string(description: "Target tag name", name: 'targetVersion',  defaultValue: "1.3.2.2")
+		string(description: "Target tag name", name: 'targetVersion',  defaultValue: "1.3.2.2"),
+		string(description: "Signing Key Id", name: 'keyId',  defaultValue: "E85A1CDA")
     }
 
 	stages {
@@ -39,13 +40,21 @@ pipeline {
 					echo 'Produce fresh debian changelog using gitlog'
 					sh " ../iotaledger-iri-ci/makechangelog.sh"
 				}
-
+            }
+        }
+    
+        stage("Produce debian source file") {
+           steps {
 				dir('iotaledger-iri-ci') {
 					echo "Produce debian source file for upload"
-					sh "dpkg-buildpackage -I -I.* -S"
+					sh "dpkg-buildpackage -k${keyId} -p'gpg --no-tty --passphrase-file /etc/jenkins.passphrase' -I -I.* -S"
 				}
 	        }
-	     }
+	    }
+
+        stage("Upload source file to launchpad") {
+             sh "dput ppa:iotaledger/ppa iotaledger-iri_${targetVersion}_source.changes"
+        }
 
 		
 
