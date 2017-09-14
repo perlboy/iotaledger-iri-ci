@@ -53,7 +53,9 @@ pipeline {
 	    }
 
         stage("Upload source file to launchpad") {
+			steps {
              sh "dput ppa:iotaledger/ppa iotaledger-iri_${targetVersion}_source.changes"
+			}
         }
 
 		
