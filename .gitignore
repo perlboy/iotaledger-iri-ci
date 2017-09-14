@@ -1,4 +1,5 @@
 /target/
+iri.jar
 *.pydevproject
 .project
 .metadata
