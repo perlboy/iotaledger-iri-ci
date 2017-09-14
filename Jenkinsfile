@@ -43,6 +43,7 @@ pipeline {
 				dir('iotaledger-iri-ci') {
 					echo "Produce debian source file for upload"
 					sh "dpkg-buildpackage -I -I.* -S"
+				}
 	        }
 	     }
 
